@@ -5,11 +5,11 @@
    - **Statyczny** - rodzaj polimorfizmu, który jest rozpoznawany na etapie kompilacji. Przykładem jest przeciążenie ```funkcji``` i ```szablonów```.
    - **Dynamiczny** - polimorfizm dynamiczny jest rozpoznawany na etapie wykonania programu. Wykorzystuje ```funkcje wirtualne``` i ```dziedziczenie```.
    
-> **Bonusowe** 
- **Czym jest ```vtable```?**
+> **Bonusowe**  
+> **Czym jest ```vtable```?**
    - ```vtable``` (virtual table) to tabela zawierająca wskaźniki do funkcji wirtualnych klasy. Używana jest do implementacji polimorfizmu dynamicznego.
 
-> **Bonusowe**
+> **Bonusowe**  
 > **Czym jest i co oznacza```SFINAE```?**
    - ```SFINAE``` czyli *Substitution Failure Is Not An Error*, to zasada w C++, która pozwala na ignorowanie szablonów, które prowadzą do błędów kompilacji podczas ich zastępowania typami.  
 
@@ -67,17 +67,24 @@ extern int x; // will not work
    - ```std::shared_ptr``` to inteligentny wskaźnik, który pozwala na wielokrotne udostępnianie obiektu. Obiekt jest usuwany, gdy ostatni ```std::shared_ptr``` do niego przestaje istnieć.
    - ```std::unique_ptr``` zapewnia wyłączne prawo do posiadania obiektu. Nie można skopiować ```std::unique_ptr``` natomiast mozna stosować na nim ```std::move()```.
 
-> **Bonusowe**
+> **Bonusowe**  
 > **Czym jest ```auto_ptr```?**
    - ```auto_ptr``` to stary rodzaj inteligentnego wskaźnika, który jest teraz przestarzały. Miał semantykę przenoszenia, ale nie był zgodny z kontenerami ```STL```. Był też problematyczny, ponieważ miał dziwaczne zachowanie przy kopiowaniu, które faktycznie przenosiło własność.
 
 #### Jaka jest róznica między tworzeniem ```std::shared_ptr``` za pomocą ```new``` a ```std::make_shared```?
 
-> **Przykład:** 
-> ```./examples/shared_ptr_deallocation.cpp```
+>**Przykład:**    
+>```./examples/shared_ptr_deallocation.cpp```
 
 - ```std::make_shared``` tworzy obiekt i ```std::shared_ptr``` do niego w jednej alokacji pamięci, co jest efektywniejsze. 
 - Tworzenie poprzez ```new``` wymaga dwóch alokacji - jednej na obiekt, drugiej na licznik referencji.
+
+> **Bonusowe**  
+> **Jaki jest rozmiar ```std::unique_ptr```?**
+- Zalezy od deletera. Domyślnie jest to rozmiar wskaźnika.
+
+> **Przykład:**    
+> ```./examples/unique_ptr_deleter.cpp```
 
 #### Czym jest ```std::weak_ptr```?
    - ```std::weak_ptr``` jest to rodzaj inteligentnego wskaźnika, który trzyma "słabą" referencję do obiektu zarządzanego przez shared_ptr. Nie przeszkadza to w usunięciu obiektu, ale pozwala sprawdzić, czy obiekt nadal istnieje, zanim zostanie do niego dostęp.
@@ -89,7 +96,7 @@ extern int x; // will not work
 #### Czym jest ```lambda```?
    - Jest to obiekt anonimowej klasy, z operatorem ```operator() const``` wraz z listą argumentów przekazywanych jako ```capture```.
 
-> **Bonusowe**
+> **Bonusowe**  
 > **Jaka jest różnica między```lambda``` a ```std::function```?**
    - Universal reference: Jest to referencja, która może wiązać się zarówno z l-wartością, jak i z r-wartością, zależnie od kontekstu.
 
@@ -109,7 +116,7 @@ int main() {
 ```
    - Zależy to od kompilatora. ```gcc``` raczej stworzy ```square5``` w czasie kompilacji, natomiast ```MSVC``` jest bardziej leniwy.
 
-> **Bonusowe**
+> **Bonusowe**  
 > **W jaki sposob można zmusić kompilator do obliczenia ```square5``` w czasie kompilacji?**
    - Można użyć ```static contexpr```
    - Można użyć ```square5``` w kontekście wymagającym stałego wyrarzenia, np. ```static_assert``` lub ```std::array<int, square5>```.
@@ -136,12 +143,14 @@ int main() {
     - ```std::unordered_map```
     - ```std::unordered_multimap```
 
-> **Bonusowe**
+> **Bonusowe**  
 > **Jak zaimplementowany jest ```std::map```?**
 - ```std::map``` jest zaimplementowany jako drzewo np. ```czerwono-czarne```.
 
-> **Bonusowe**
+> **Bonusowe**  
 > **Co nalezy zdefiniowac dla ```klasy``` aby jego ```obiekty``` umiescic w ```std::set``` i ```std::unordered_map```?**
+- komparator
+- funkcja haszująca
 
 ### Wielowątkowość
 #### Jaka są róznice między procesem a wątkiem?
@@ -238,7 +247,7 @@ int main() {
    - ```Builder``` - oddziela konstrukcję obiektu od jego reprezentacji, zawsze tworząc ten sam typ produktu.
    - ```Adapter``` - konwertuje interfejs jednej klasy na interfejs oczekiwany przez klientów. Pozwala na współpracę klas, które normalnie nie byłyby kompatybilne.
 
-> **Bonusowe**
+> **Bonusowe**  
 > **Czym są ```wzorce architektoniczne``` i wymien jakie znasz**
 - ```Wzorce architektoniczne``` to ogólne, wielokrotnie używane rozwiązania do organizowania struktury oprogramowania. W przeciwieństwie do wzorców projektowych, które są stosowane w ramach pojedynczych modułów, wzorce architektoniczne są stosowane na poziomie architektury systemu. Przykłady wzorców architektonicznych to:
 
