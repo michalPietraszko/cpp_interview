@@ -4,7 +4,7 @@
 
 /**
  * Question: 
- * What is memory freed only after weak_ptr going out of scope? 
+ * Why is memory freed only after weak_ptr going out of scope? 
 */
 
 void* operator new(std::size_t n) {
