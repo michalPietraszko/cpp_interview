@@ -1,5 +1,5 @@
 ### Opis repozytorium
-- W folderze ```./examples``` znajdują się przykłady do bardziej złoonych pytań
+- W folderze ```./examples``` znajdują się przykłady do bardziej złożonych pytań
 - W pliku ```./Questions.md``` znajduje się lista pytań
 
 #### Poziom #### 
